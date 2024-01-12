@@ -298,4 +298,107 @@ if __name__ == "__main__":
 # The fields (_name, _make, and _price) are marked as private by convention (using a single leading underscore).
 # Properties (name, make, and price) are defined with the @property decorator to provide read-only access to the private fields.
 
-# 3.
+# 3. Create an instance of the class in your main method and print its content.
+
+class Vehicle:
+    def __init__(self, name, make, price):
+        self._name = name
+        self._make = make
+        self._price = price
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def make(self):
+        return self._make
+
+    @property
+    def price(self):
+        return self._price
+
+    def display_details(self):
+        details = f"{self.name}, {self.make}, ${self.price:,.2f}"
+        print(details)
+
+def main():
+    # Create an instance of the Vehicle class
+    my_vehicle = Vehicle(name="Car123", make="BrandXYZ", price=25000.50)
+
+    # Access private fields through properties
+    print("Name:", my_vehicle.name)
+    print("Make:", my_vehicle.make)
+    print("Price:", my_vehicle.price)
+
+    # Display the details using the class method
+    my_vehicle.display_details()
+
+if __name__ == "__main__":
+    main()
+
+# In this example, the main function creates an instance of the Vehicle class called my_vehicle and then prints its content by accessing
+# the private fields through the defined properties and calling the display_details method.
+
+#4. Create a method that takes the Vehicle object as an argument.
+
+class Vehicle:
+    def __init__(self, name, make, price):
+        self._name = name
+        self._make = make
+        self._price = price
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def make(self):
+        return self._make
+
+    @property
+    def price(self):
+        return self._price
+
+    def display_details(self):
+        details = f"{self.name}, {self.make}, £{self.price:,.2f}"
+        print(details)
+
+    def compare_with(self, other_vehicle):
+        if self.price > other_vehicle.price:
+            print(f"{self.name} is more expensive than {other_vehicle.name}.")
+        elif self.price < other_vehicle.price:
+            print(f"{self.name} is less expensive than {other_vehicle.name}.")
+        else:
+            print(f"{self.name} and {other_vehicle.name} have the same price.")
+
+def main():
+    # Create two instances of the Vehicle class
+    vehicle1 = Vehicle(name="Car123", make="BrandXYZ", price=25000.50)
+    vehicle2 = Vehicle(name="Truck456", make="BrandABC", price=30000.75)
+
+    # Display the details of both vehicles
+    print("Vehicle 1 details:")
+    vehicle1.display_details()
+
+    print("\nVehicle 2 details:")
+    vehicle2.display_details()
+
+    # Compare the prices of the two vehicles
+    vehicle1.compare_with(vehicle2)
+
+if __name__ == "__main__":
+    main()
+
+  #In this example, the compare_with method compares the price of the current instance (self) with the price of another Vehicle object (other_vehicle).
+# The main function creates two instances of the Vehicle class and then compares their prices using the compare_with method.
+
+
+
+
+
+
+
+
+
+
