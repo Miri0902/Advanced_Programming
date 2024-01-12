@@ -393,12 +393,80 @@ if __name__ == "__main__":
   #In this example, the compare_with method compares the price of the current instance (self) with the price of another Vehicle object (other_vehicle).
 # The main function creates two instances of the Vehicle class and then compares their prices using the compare_with method.
 
+# 5. Alter the Vehicle object inside the method. Print the object inside the method as well as inside the main method.
+# Do you notice any difference? What do you think is the best way of handling this?
 
 
+class Vehicle:
+    def __init__(self, name, make, price):
+        self._name = name
+        self._make = make
+        self._price = price
 
+    @property
+    def name(self):
+        return self._name
 
+    @property
+    def make(self):
+        return self._make
 
+    @property
+    def price(self):
+        return self._price
 
+    def display_details(self):
+        details = f"{self.name}, {self.make}, £{self.price:,.2f}"
+        print(details)
 
+    def alter_and_return(self, other_vehicle):
+        # Create a new Vehicle object with altered price
+        altered_vehicle = Vehicle(
+            name=other_vehicle.name,
+            make=other_vehicle.make,
+            price=other_vehicle.price * 2
+        )
 
+        return altered_vehicle
+
+    def compare_with(self, other_vehicle):
+        print(f"Inside compare_with method - Before alteration:")
+        other_vehicle.display_details()
+
+        # Alter the other Vehicle object by returning a new object
+        altered_vehicle = self.alter_and_return(other_vehicle)
+
+        print(f"\nInside compare_with method - After alteration:")
+        altered_vehicle.display_details()
+
+        # You can choose to return the altered_vehicle if needed
+        # return altered_vehicle
+
+def main():
+    # Create two instances of the Vehicle class
+    vehicle1 = Vehicle(name="Car123", make="BrandXYZ", price=25000.50)
+    vehicle2 = Vehicle(name="Truck456", make="BrandABC", price=30000.75)
+
+    # Display the details of both vehicles before alteration
+    print("Vehicle 1 details (before alteration):")
+    vehicle1.display_details()
+
+    print("\nVehicle 2 details (before alteration):")
+    vehicle2.display_details()
+
+    # Compare the prices of the two vehicles and alter the second vehicle
+    vehicle1.compare_with(vehicle2)
+
+    # Display the details of both vehicles after alteration
+    print("\nVehicle 1 details (after alteration):")
+    vehicle1.display_details()
+
+    print("\nVehicle 2 details (after alteration):")
+    vehicle2.display_details()
+
+if __name__ == "__main__":
+    main()
+
+# In this version, the alter_and_return method is responsible for creating a new Vehicle object with an altered price,
+# and the compare_with method uses this method to perform the alteration. The rest of the code remains unchanged.
 
