@@ -227,3 +227,75 @@ if __name__ == "__main__":
 # This program defines a function add_matrices to perform matrix addition and a print_matrix function to display matrices.
 # The main function takes user input for two matrices, performs matrix addition, and displays the original matrices along with the result.
 
+
+"""
+OBJECT ORIENTED PROGRAMMING
+
+"""
+
+#1. Create a class of type Vehicle with the following fields: name, make,
+# price and function details that prints the properties separated by a comma.
+
+class Vehicle:
+    def __init__(self, name, make, price):
+        self.name = name
+        self.make = make
+        self.price = price
+
+    def display_details(self):
+        details = f"{self.name}, {self.make}, £{self.price:,.2f}"
+        print(details)
+
+# Example usage:
+if __name__ == "__main__":
+    # Create an instance of the Vehicle class
+    my_vehicle = Vehicle(name="Car123", make="BrandXYZ", price=25000.50)
+
+    # Display the details using the class method
+    my_vehicle.display_details()
+
+# The Vehicle class has an __init__ method to initialize the object with the provided values for name, make, and price.
+# There's a method named display_details that prints the properties of the vehicle separated by a comma.
+# In the example usage section, an instance of the Vehicle class is created, and its display_details method is called to print the details.
+
+#2. Alter the above class, make the fields private and create properties for accessing them.
+
+class Vehicle:
+    def __init__(self, name, make, price):
+        self._name = name
+        self._make = make
+        self._price = price
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def make(self):
+        return self._make
+
+    @property
+    def price(self):
+        return self._price
+
+    def display_details(self):
+        details = f"{self.name}, {self.make}, £{self.price:,.2f}"
+        print(details)
+
+# Example usage:
+if __name__ == "__main__":
+    # Create an instance of the Vehicle class
+    my_vehicle = Vehicle(name="Car123", make="BrandXYZ", price=25000.50)
+
+    # Access private fields through properties
+    print("Name:", my_vehicle.name)
+    print("Make:", my_vehicle.make)
+    print("Price:", my_vehicle.price)
+
+    # Display the details using the class method
+    my_vehicle.display_details()
+
+# The fields (_name, _make, and _price) are marked as private by convention (using a single leading underscore).
+# Properties (name, make, and price) are defined with the @property decorator to provide read-only access to the private fields.
+
+# 3.
